@@ -40,7 +40,7 @@
 			$_hka__description = get_bloginfo( 'description', 'display' );
 			if ( $_hka__description || is_customize_preview() ) :
 				?>
-				<p class="site-description"><?php echo $_hka__description; /* WPCS: xss ok. */ ?></p>
+				<p class="site-description"><?php echo $_hka__description; /* // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped */ ?></p>
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 

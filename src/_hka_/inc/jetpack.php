@@ -41,9 +41,9 @@ function _hka__jetpack_setup() {
 				'comment'    => '.comments-link',
 			),
 			'featured-images' => array(
-				'archive'    => true,
-				'post'       => true,
-				'page'       => true,
+				'archive' => true,
+				'post'    => true,
+				'page'    => true,
 			),
 		)
 	);
