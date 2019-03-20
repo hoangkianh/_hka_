@@ -8,8 +8,8 @@
 		"eslint-fix": "eslint --cache ./ --ext .js --env browser --fix; exit 0",
 		"stylelint": "stylelint ./**/*.css ./**/*.scss --cache; exit 0",
 		"stylelint-fix": "stylelint ./**/*.css ./**/*.scss --cache --fix; exit 0",
-		"phpcs": "phpcs ./**/ --extensions=php --cache -n --colors --standard=WordPress; exit 0;",
-		"phpcs-fix": "phpcbf ./**/ --extensions=php -n --standard=WordPress; exit 0;"
+		"phpcs": "phpcs ./**/ --extensions=php --cache --colors --standard=WordPress; exit 0;",
+		"phpcs-fix": "phpcbf ./**/ --extensions=php --standard=WordPress; exit 0;"
 	},
 	"author": "Anh Hoang Nguyen (hoangkianh31592@gmail.com)",
 	"license": "GPL",
