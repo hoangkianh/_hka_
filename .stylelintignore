@@ -1,0 +1,6 @@
+dist/*
+node_modules/*
+**/*.js
+**/*.php
+style.css
+src/_hka_/assets/libs/*

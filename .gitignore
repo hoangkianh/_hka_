@@ -1,0 +1,6 @@
+.eslintcache
+.stylelintcache
+.DS_Store
+.idea/
+node_modules/
+.vsicode/

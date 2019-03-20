@@ -1,0 +1,25 @@
+{
+    "extends": "stylelint-config-wordpress",
+		"plugins": [
+			"stylelint-order"
+		],
+    "rules": {
+				"order/properties-alphabetical-order": true,
+        "number-leading-zero": "never",
+        "no-duplicate-selectors": null,
+        "no-descending-specificity": null,
+        "string-quotes": "single",
+				"at-rule-no-unknown": [
+					true,
+					"ignoreAtRules": [
+						"each",
+						"else",
+						"extend",
+						"function",
+						"if",
+						"include",
+						"mixin",
+						"return" ]
+				]
+    }
+}
