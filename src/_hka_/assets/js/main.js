@@ -4,11 +4,9 @@ let _hka_ = ( ( $ ) => {
 	let $body = $( 'body' );
 
 	return {
-		init: () => {
+		init() {
 		}
 	};
 })( jQuery );
 
-jQuery( document ).ready( () => {
-	_hka_.init();
-});
+jQuery( document ).ready( () => _hka_.init() );
