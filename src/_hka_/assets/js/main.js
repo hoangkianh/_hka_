@@ -5,6 +5,61 @@ let _hka_ = ( ( $ ) => {
 
 	return {
 		init() {
+			this.mobileMenu();
+		},
+		mobileMenu() {
+			let $menuToggle = $( '.menu-toggle' );
+
+			$menuToggle.on( 'click', ( e ) => {
+				$( e.currentTarget ).toggleClass( 'is-active' );
+				$body.toggleClass( 'menu-open' );
+			});
+
+			$( '#page' ).on( 'click', ( e ) => {
+				if ( ! $( e.target ).closest( '.menu-toggle' ).length &&
+					! $( e.target ).closest( '#primary-menu' ).length &&
+					$menuToggle.hasClass( 'is-active' ) &&
+					$body.hasClass( 'menu-open' ) ) {
+					$menuToggle.removeClass( 'is-active' );
+					$body.removeClass( 'menu-open' );
+
+					e.preventDefault();
+				}
+			});
+
+			// Add arrows to all items have sub-menu.
+			$( '#primary-menu' ).find( 'li:has(ul)' ).each( ( index, el ) => {
+				let $el = $( el ),
+					link = $el.find( '>a' ).clone();
+
+				if ( link.length ) {
+					$el.prepend( '<span class="open-child">open</span>' );
+					$el.find( '>ul' ).prepend( '<li class="menu-item-back">' + link.wrap( '<div>' ).parent().html() + '</a></li>' );
+				}
+			});
+
+			// Open sub-menu.
+			$( '.open-child' ).on( 'click', ( e ) => {
+				let $parent = $( e.currentTarget ).parent();
+
+				if ( $parent.hasClass( 'over' ) ) {
+					$parent.removeClass( 'over' );
+				} else {
+					$parent.parent().find( '>li.over' ).removeClass( 'over' );
+					$parent.addClass( 'over' );
+				}
+
+				$( '#primary-menu' ).parent().scrollTop( 0 );
+			});
+
+			// Go back.
+			$( '.menu-item-back' ).on( 'click', ( e ) => {
+				let $grand = $( e.currentTarget ).parent().parent();
+
+				if ( $grand.hasClass( 'over' ) ) {
+					$grand.removeClass( 'over' );
+				}
+			});
 		}
 	};
 })( jQuery );

@@ -31,7 +31,7 @@ if ( ! function_exists( '_hka__posted_on' ) ) :
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
 		);
 
-		echo '<span class="posted-on">' . $posted_on . '</span>'; // WPCS: XSS OK.
+		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	}
 endif;
@@ -47,7 +47,7 @@ if ( ! function_exists( '_hka__posted_by' ) ) :
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
-		echo '<span class="byline"> ' . $byline . '</span>'; // WPCS: XSS OK.
+		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	}
 endif;
@@ -63,14 +63,14 @@ if ( ! function_exists( '_hka__entry_footer' ) ) :
 			$categories_list = get_the_category_list( esc_html__( ', ', '_hka_' ) );
 			if ( $categories_list ) {
 				/* translators: 1: list of categories. */
-				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', '_hka_' ) . '</span>', $categories_list ); // WPCS: XSS OK.
+				printf( '<span class="cat-links">' . esc_html__( 'Posted in %1$s', '_hka_' ) . '</span>', $categories_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
 			/* translators: used between list items, there is a space after the comma */
 			$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', '_hka_' ) );
 			if ( $tags_list ) {
 				/* translators: 1: list of tags. */
-				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', '_hka_' ) . '</span>', $tags_list ); // WPCS: XSS OK.
+				printf( '<span class="tags-links">' . esc_html__( 'Tagged %1$s', '_hka_' ) . '</span>', $tags_list ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 		}
 
@@ -150,5 +150,24 @@ if ( ! function_exists( '_hka__post_thumbnail' ) ) :
 
 			<?php
 		endif; // End is_singular().
+	}
+endif;
+
+if ( ! function_exists( '_hka__menu_toggle' ) ) :
+	/**
+	 * Menu toggle
+	 */
+	function _hka__menu_toggle() {
+		?>
+		<div class="menu-toggle d-lg-none">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+				<path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
+							id="top"></path>
+				<path d="M300,320 L540,320" id="middle"></path>
+				<path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
+								id="bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
+			</svg>
+		</div>
+		<?php
 	}
 endif;

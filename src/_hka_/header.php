@@ -45,7 +45,7 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', '_hka_' ); ?></button>
+			<?php _hka__menu_toggle(); ?>
 			<?php
 			wp_nav_menu(
 				array(
