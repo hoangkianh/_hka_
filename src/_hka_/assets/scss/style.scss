@@ -1,24 +1,21 @@
 /*!
-Theme Name: CactusPress
-Theme URI: http://hkablog.com/cactuspress
+Theme Name: _hka_
+Theme URI: http://underscores.me/
 Author: HKA
 Author URI: http://hkablog.com
-Description: 🌵 A responsive, clean and simple theme for WordPress
-Version: 1.0
+Description: Description
+Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
-Text Domain: cactuspress
-Tags: blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+Text Domain: _hka_
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun,
 and share what you've learned with others.
 
-CactusPress is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
+_hka_ is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
-
-Normalizing styles have been helped along thanks to the fine work of
-Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
 
 /*--------------------------------------------------------------
@@ -40,6 +37,9 @@ Split up into logical sections, the smaller and simpler the better.
 used with preprocessors and contain font, colors definitions, etc
 ================================================
 */
+@import '../../../../node_modules/bootstrap/scss/functions';
+@import '../../../../node_modules/bootstrap/scss/variables';
+@import '../../../../node_modules/bootstrap/scss/mixins';
 @import 'settings/*';
 
 /*
@@ -61,6 +61,7 @@ GENERIC
 reset and/or normalize styles, box-sizing definition, etc.
 This is the first layer which generates actual CSS.
 */
+@import '../../../../node_modules/bootstrap/scss/reboot';
 @import 'generic/*';
 
 /*
@@ -79,6 +80,7 @@ OBJECTS
 This is the first layer of classes and should be agnostically named
   Eg. list-inline, ui-list, etc.
 */
+@import '../../../../node_modules/bootstrap/scss/grid';
 @import 'objects/*';
 
 /*
@@ -96,4 +98,5 @@ Trumps
 utilities and helper classes with ability to override anything
 which goes before in the triangle, eg. .hide helper class
 */
+@import '../../../../node_modules/bootstrap/scss/utilities';
 @import 'trumps/*';
