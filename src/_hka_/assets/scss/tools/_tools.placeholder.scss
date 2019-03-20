@@ -1,0 +1,25 @@
+%fa-icon {
+	display: inline-block;
+	font-family: 'Font Awesome 5 Free'; /* stylelint-disable-line font-family-no-missing-generic-family-keyword */
+	font-style: normal;
+	font-weight: 900;
+}
+
+%far-icon {
+	display: inline-block;
+	font-family: 'Font Awesome 5 Free'; /* stylelint-disable-line font-family-no-missing-generic-family-keyword */
+	font-style: normal;
+	font-weight: 400;
+}
+
+%fab-icon {
+	display: inline-block;
+	font-family: 'Font Awesome 5 Brands'; /* stylelint-disable-line font-family-no-missing-generic-family-keyword */
+	font-style: normal;
+	font-weight: 400;
+}
+
+%transition {
+
+	@include transition();
+}

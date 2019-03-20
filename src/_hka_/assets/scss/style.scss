@@ -1,0 +1,99 @@
+/*!
+Theme Name: CactusPress
+Theme URI: http://hkablog.com/cactuspress
+Author: HKA
+Author URI: http://hkablog.com
+Description: 🌵 A responsive, clean and simple theme for WordPress
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: cactuspress
+Tags: blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun,
+and share what you've learned with others.
+
+CactusPress is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Settings
+# Tools
+# Generic
+# Elements
+# Objects
+# Components
+# Trumps
+--------------------------------------------------------------*/
+
+/*
+SETTINGS
+store all variables, config switches, etc.
+Split up into logical sections, the smaller and simpler the better.
+used with preprocessors and contain font, colors definitions, etc
+================================================
+*/
+@import 'settings/*';
+
+/*
+TOOLS
+================================================
+store all programic Sass functionality.
+If your tooling is simplistic enough, you can do something like:
+  tools.mixins
+If your tooling is more complex you can split it up like:
+  tools.grid
+  tools.typography
+  etc.
+*/
+@import 'tools/*';
+
+/*
+GENERIC
+================================================
+reset and/or normalize styles, box-sizing definition, etc.
+This is the first layer which generates actual CSS.
+*/
+@import 'generic/*';
+
+/*
+ELEMENTS
+================================================
+styling for bare HTML elements (like H1, A, etc.).
+moThese come with default styling from the browser so we can redefine them here.
+*/
+@import 'elements/*';
+
+/*
+OBJECTS
+================================================
+"formless", in other words invisible to the user, no cosmetics
+  Eg. wrappers, grid systems, etc.
+This is the first layer of classes and should be agnostically named
+  Eg. list-inline, ui-list, etc.
+*/
+@import 'objects/*';
+
+/*
+COMPONENTS
+================================================
+Specific UI components.
+This is where majority of our work takes place
+and our UI components are often composed of Objects and Components
+*/
+@import 'components/*';
+
+/*
+Trumps
+================================================
+utilities and helper classes with ability to override anything
+which goes before in the triangle, eg. .hide helper class
+*/
+@import 'trumps/*';

@@ -1,0 +1,19 @@
+table {
+	border-collapse: collapse;
+	display: block;
+	font-style: $font-size - 2px;
+	overflow: auto;
+	width: 100%;
+}
+
+th {
+	border-bottom: 1px dashed $color-border;
+	color: $color-accent-2;
+	font-style: $font-size - 1px;
+	font-weight: 700;
+	padding: 8px;
+}
+
+td {
+	padding: 9px 8px 0;
+}

@@ -1,0 +1,46 @@
+@mixin antialiased() {
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+}
+
+@mixin hyphens($value) {
+	hyphens: $value;
+}
+
+@mixin underline($size, $color) {
+	background-image: linear-gradient(transparent, transparent $size, $color $size, $color);
+	background-position: bottom;
+	background-repeat: repeat-x;
+	background-size: 100% 6px;
+}
+
+@mixin transition() {
+	transition: all .5s ease;
+}
+
+@mixin fa-icon-before($icon) {
+
+	@extend %fa-icon;
+
+	&::before {
+		content: $icon;
+	}
+}
+
+@mixin far-icon-before($icon) {
+
+	@extend %far-icon;
+
+	&::before {
+		content: $icon;
+	}
+}
+
+@mixin fab-icon-before($icon) {
+
+	@extend %fab-icon;
+
+	&::before {
+		content: $icon;
+	}
+}

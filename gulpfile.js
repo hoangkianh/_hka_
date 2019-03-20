@@ -1,7 +1,7 @@
 'use strict';
 
 const gulp = require( 'gulp' );
-const config = require( 'config.json' );
+const config = require( './config.json' );
 const glob = require( 'glob' );
 const bs = require( 'browser-sync' );
 const fs = require( 'fs' );
@@ -33,11 +33,11 @@ function getThemeVersion() {
 	return version;
 }
 
-gulp.task( 'sass', function() {
-	gulp.src( `src/${theme}/assets/scss/style.scss` )
+gulp.task( 'sass', () => {
+	return gulp.src( `src/${theme}/assets/scss/style.scss` )
 		.pipe( $.plumber() )
 		.pipe( $.sourcemaps.init() )
-		.pipe( $.sassGlobImport() )
+		.pipe( $.sassGlob() )
 		.pipe( $.sass({ outputStyle: 'expanded' }) )
 		.pipe( $.postcss([
 			autoprefixer({ browsers: [ 'last 2 versions' ] }),
@@ -48,24 +48,23 @@ gulp.task( 'sass', function() {
 			sourceRoot: './assets/scss/'
 		}) )
 		.pipe( $.lineEndingCorrector() )
-		.pipe( plumber.stop() )
 		.pipe( gulp.dest( `src/${theme}/` ) );
 });
 
-gulp.task( 'bs', function() {
+gulp.task( 'bs', () => {
 	bs.init({
 		files: `src/${theme}/*.css`
 	});
 });
 
-gulp.task( 'bs-reload', function() {
+gulp.task( 'bs-reload', () => {
 	bs.reload();
 });
 
-gulp.task( 'check-domain', function() {
+gulp.task( 'check-domain', () => {
 	return gulp.src( '**/*.php' )
-		.pipe( $.checktextDomain({
-			textDomain: config.textDomain,
+		.pipe( $.checktextdomain({
+			text_domain: config.textDomain, // eslint-disable-line camelcase
 			keywords: [
 				'__:1,2d',
 				'_e:1,2d',
@@ -85,7 +84,7 @@ gulp.task( 'check-domain', function() {
 		}) );
 });
 
-gulp.task( 'translate', function() {
+gulp.task( 'translate', () => {
 	return gulp.src( `src/${theme}/**/*.php` )
 		.pipe( $.sort() )
 		.pipe( $.wpPot({
@@ -96,22 +95,23 @@ gulp.task( 'translate', function() {
 		.pipe( gulp.dest( `src/${theme}/languages/${config.textDomain}.pot` ) );
 });
 
-gulp.task( 'zip', function() {
-	gulp.start( 'translate' );
+gulp.task( 'zip', () => {
+	gulp.series( 'translate' );
 
 	return gulp.src(
-			[ 'src/**/*',
-				`!src/${theme}/assets/scss/**`,
-				'!src/**/*.DS_Store'
-			] )
+		[ 'src/**/*',
+			`!src/${theme}/assets/scss/**`,
+			`!src/${theme}/assets/sourcemap/**`,
+			'!src/**/*.DS_Store'
+		])
 		.pipe( zip( `${theme}-${getThemeVersion()}.zip` ) )
 		.pipe( gulp.dest( 'dist' ) );
 });
 
-gulp.task( 'watch', function() {
-	gulp.watch( `src/${theme}/assets/scss/**/*.scss`, [ 'sass' ]);
-	gulp.watch( `src/${theme}/assets/js/**/*.js`, [ 'bs-reload' ]);
-	gulp.watch( 'src/**/*.php', [ 'bs-reload' ]);
+gulp.task( 'watch', () => {
+	gulp.watch( `src/${theme}/assets/scss/**/*.scss`, gulp.series( 'sass' ) );
+	gulp.watch( `src/${theme}/assets/js/**/*.js`, gulp.series( 'bs-reload' ) );
+	gulp.watch( 'src/**/*.php', gulp.series( 'bs-reload' ) );
 });
 
-gulp.task( 'default', [ 'bs', 'sass', 'watch' ]);
+gulp.task( 'default', gulp.parallel( 'bs', 'sass', 'watch' ) );
