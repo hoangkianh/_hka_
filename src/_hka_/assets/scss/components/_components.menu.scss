@@ -1,0 +1,176 @@
+#site-navigation .menu-toggle {
+	position: absolute;
+	right: 0;
+	top: 15px;
+
+	svg {
+		cursor: pointer;
+		display: inline-block;
+		height: 60px;
+		transform: translate3d(0, 0, 0);
+		width: 60px;
+	}
+
+	path {
+		fill: none;
+		stroke: #666;
+		stroke-dashoffset: 0;
+		stroke-linecap: round;
+		stroke-width: 40px;
+		transition: stroke-dashoffset .5s cubic-bezier(.25, -.25, .75, 1.25), stroke-dasharray .5s cubic-bezier(.25, -.25, .75, 1.25);
+
+		&#top,
+		&#bottom {
+			stroke-dasharray: 240px 950px;
+		}
+
+		&#middle {
+			stroke-dasharray: 240px 240px;
+		}
+	}
+
+	&.is-active {
+
+		path#top,
+		path#bottom {
+			stroke-dashoffset: -650px;
+		}
+
+		path#middle {
+			stroke-dasharray: 1px 220px;
+			stroke-dashoffset: -115px;
+		}
+
+	}
+}
+
+#primary-menu {
+	background-color: #fff;
+	height: 100%;
+	left: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: fixed;
+	top: 0;
+	transform: translate3d(-100%, 0, 0);
+	transition: transform .4s ease;
+	width: 270px;
+	z-index: 9999;
+
+	.admin-bar & {
+		top: 46px;
+	}
+
+	.menu-open & {
+		transform: translate3d(0, 0, 0);
+	}
+
+	&,
+	> ul {
+		line-height: 15px;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	li.page_item,
+	li.menu-item {
+		border-bottom: 1px solid #e6e6e6;
+		display: block;
+		padding-left: 20px;
+		padding-right: 20px;
+
+		&.hide {
+			display: none;
+		}
+
+		&.over {
+
+			> .children,
+			> .sub-menu {
+				transform: translateX(0);
+			}
+		}
+
+		&.page_item_has_children,
+		&.menu-item-has-children {
+			padding-right: 0;
+		}
+	}
+
+	li .children,
+	li .sub-menu {
+		background-color: #fff;
+		height: 100vh !important;
+		left: 0;
+		list-style: none;
+		margin: 0;
+		min-height: 100% !important;
+		padding: 0;
+		position: absolute;
+		top: 0;
+		transform: translateX(100%);
+		width: 100% !important;
+		z-index: 10;
+
+		@extend %transition;
+	}
+
+	a {
+		background-image: none;
+		color: inherit;
+		display: block;
+		line-height: 32px;
+		z-index: 1;
+	}
+
+	.open-child {
+		background-color: rgba(239, 239, 239, .8);
+		clear: right;
+		float: right;
+		font-size: 0;
+		line-height: 0;
+		margin-top: 1px;
+		position: relative;
+		text-align: center;
+		vertical-align: middle;
+		width: 32px;
+		z-index: 2;
+
+		@include fa-icon-before('\f054');
+
+		&::before {
+			color: #ccc;
+			display: block;
+			font-size: 12px;
+			line-height: 32px;
+		}
+	}
+
+	.menu-item-back {
+		border-bottom: 1px dashed #e6e6e6;
+		display: block;
+		font-weight: 700;
+		position: relative;
+		text-align: center;
+
+		&::before {
+			color: #777;
+			content: '\f053';
+			display: inline-block;
+			font-size: 12px;
+			left: 0;
+			line-height: 32px;
+			position: absolute;
+			top: 0;
+			width: 32px;
+
+			@extend %fa-icon;
+		}
+
+		a {
+			display: inline-block;
+			padding: 0 20px;
+		}
+	}
+}

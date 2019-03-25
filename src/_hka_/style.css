@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
 Theme Name: _hka_
 Theme URI: http://underscores.me/
@@ -38,6 +39,9 @@ used with preprocessors and contain font, colors definitions, etc
 /**
 Colors
 */
+/**
+* Fonts
+*/
 /*
 TOOLS
 ================================================
@@ -52,7 +56,16 @@ If your tooling is more complex you can split it up like:
 /*
 * Font-face
 */
-a {
+#primary-menu .open-child, #primary-menu .menu-item-back::before {
+  display: inline-block;
+  font-family: 'Font Awesome 5 Free';
+  /* stylelint-disable-line font-family-no-missing-generic-family-keyword */
+  font-style: normal;
+  font-weight: 900;
+}
+
+a, #primary-menu li .children,
+#primary-menu li .sub-menu {
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
 }
@@ -747,6 +760,186 @@ Specific UI components.
 This is where majority of our work takes place
 and our UI components are often composed of Objects and Components
 */
+#site-navigation .menu-toggle {
+  position: absolute;
+  right: 0;
+  top: 15px;
+}
+
+#site-navigation .menu-toggle svg {
+  cursor: pointer;
+  display: inline-block;
+  height: 60px;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  width: 60px;
+}
+
+#site-navigation .menu-toggle path {
+  fill: none;
+  stroke: #666;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  stroke-width: 40px;
+  -webkit-transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25), stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
+  transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25), stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
+}
+
+#site-navigation .menu-toggle path#top, #site-navigation .menu-toggle path#bottom {
+  stroke-dasharray: 240px 950px;
+}
+
+#site-navigation .menu-toggle path#middle {
+  stroke-dasharray: 240px 240px;
+}
+
+#site-navigation .menu-toggle.is-active path#top,
+#site-navigation .menu-toggle.is-active path#bottom {
+  stroke-dashoffset: -650px;
+}
+
+#site-navigation .menu-toggle.is-active path#middle {
+  stroke-dasharray: 1px 220px;
+  stroke-dashoffset: -115px;
+}
+
+#primary-menu {
+  background-color: #fff;
+  height: 100%;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  -webkit-transform: translate3d(-100%, 0, 0);
+          transform: translate3d(-100%, 0, 0);
+  -webkit-transition: -webkit-transform .4s ease;
+  transition: -webkit-transform .4s ease;
+  transition: transform .4s ease;
+  transition: transform .4s ease, -webkit-transform .4s ease;
+  width: 270px;
+  z-index: 9999;
+}
+
+.admin-bar #primary-menu {
+  top: 46px;
+}
+
+.menu-open #primary-menu {
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+}
+
+#primary-menu,
+#primary-menu > ul {
+  line-height: 15px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#primary-menu li.page_item,
+#primary-menu li.menu-item {
+  border-bottom: 1px solid #e6e6e6;
+  display: block;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#primary-menu li.page_item.hide,
+#primary-menu li.menu-item.hide {
+  display: none;
+}
+
+#primary-menu li.page_item.over > .children,
+#primary-menu li.page_item.over > .sub-menu,
+#primary-menu li.menu-item.over > .children,
+#primary-menu li.menu-item.over > .sub-menu {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+#primary-menu li.page_item.page_item_has_children, #primary-menu li.page_item.menu-item-has-children,
+#primary-menu li.menu-item.page_item_has_children,
+#primary-menu li.menu-item.menu-item-has-children {
+  padding-right: 0;
+}
+
+#primary-menu li .children,
+#primary-menu li .sub-menu {
+  background-color: #fff;
+  height: 100vh !important;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  min-height: 100% !important;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  width: 100% !important;
+  z-index: 10;
+}
+
+#primary-menu a {
+  background-image: none;
+  color: inherit;
+  display: block;
+  line-height: 32px;
+  z-index: 1;
+}
+
+#primary-menu .open-child {
+  background-color: rgba(239, 239, 239, 0.8);
+  clear: right;
+  float: right;
+  font-size: 0;
+  line-height: 0;
+  margin-top: 1px;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  width: 32px;
+  z-index: 2;
+}
+
+#primary-menu .open-child::before {
+  content: "";
+}
+
+#primary-menu .open-child::before {
+  color: #ccc;
+  display: block;
+  font-size: 12px;
+  line-height: 32px;
+}
+
+#primary-menu .menu-item-back {
+  border-bottom: 1px dashed #e6e6e6;
+  display: block;
+  font-weight: 700;
+  position: relative;
+  text-align: center;
+}
+
+#primary-menu .menu-item-back::before {
+  color: #777;
+  content: '\f053';
+  display: inline-block;
+  font-size: 12px;
+  left: 0;
+  line-height: 32px;
+  position: absolute;
+  top: 0;
+  width: 32px;
+}
+
+#primary-menu .menu-item-back a {
+  display: inline-block;
+  padding: 0 20px;
+}
+
 /**
 *  Page Component (#page.site).
 */
