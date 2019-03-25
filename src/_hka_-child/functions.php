@@ -9,14 +9,14 @@
  * Enqueue scripts and styles
  */
 function _hka__child_scripts() {
-	wp_enqueue_style( '_hka_-style', get_template_directory_uri() . '/style.css', array(), _hka__THEME_VERSION );
-	wp_enqueue_style( '_hka_-child-style', get_stylesheet_directory_uri() . '/style.css', array( '_hka_-style' ), '1.0' );
+	wp_enqueue_style( '_hka_-style', get_template_directory_uri() . '/style.css', array(), _HKA__THEME_VERSION );
+	wp_enqueue_style( '_hka_-child-style', get_stylesheet_directory_uri() . '/style.css', array( '_hka_-style' ), _HKA__THEME_VERSION );
 
 	wp_enqueue_script(
 		'_hka_-child-script',
 		get_stylesheet_directory_uri() . '/script.js',
 		array( 'jquery' ),
-		'1.0',
+		_HKA__THEME_VERSION,
 		true
 	);
 
