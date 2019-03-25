@@ -1,13 +1,18 @@
 'use strict';
 
 let _hka_ = ( ( $ ) => {
-	let $body = $( 'body' );
+	let $body = $( 'body' ),
+		$window = $( window );
 
 	return {
 		init() {
 			this.mobileMenu();
 		},
 		mobileMenu() {
+			if ( 992 <= $window.width() ) {
+				return;
+			}
+
 			let $menuToggle = $( '.menu-toggle' );
 
 			$menuToggle.on( 'click', ( e ) => {
@@ -42,11 +47,11 @@ let _hka_ = ( ( $ ) => {
 			$( '.open-child' ).on( 'click', ( e ) => {
 				let $parent = $( e.currentTarget ).parent();
 
-				if ( $parent.hasClass( 'over' ) ) {
-					$parent.removeClass( 'over' );
+				if ( $parent.hasClass( 'open' ) ) {
+					$parent.removeClass( 'open' );
 				} else {
-					$parent.parent().find( '>li.over' ).removeClass( 'over' );
-					$parent.addClass( 'over' );
+					$parent.parent().find( '>li.open' ).removeClass( 'open' );
+					$parent.addClass( 'open' );
 				}
 
 				$( '#primary-menu' ).parent().scrollTop( 0 );

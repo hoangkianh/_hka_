@@ -858,10 +858,10 @@ and our UI components are often composed of Objects and Components
   display: none;
 }
 
-#primary-menu li.page_item.over > .children,
-#primary-menu li.page_item.over > .sub-menu,
-#primary-menu li.menu-item.over > .children,
-#primary-menu li.menu-item.over > .sub-menu {
+#primary-menu li.page_item.open > .children,
+#primary-menu li.page_item.open > .sub-menu,
+#primary-menu li.menu-item.open > .children,
+#primary-menu li.menu-item.open > .sub-menu {
   -webkit-transform: translateX(0);
           transform: translateX(0);
 }
@@ -4159,6 +4159,9 @@ a.text-dark:hover, a.text-dark:focus {
   }
   .offset-lg-11 {
     margin-left: 91.66667%;
+  }
+  #primary-menu .open-child {
+    display: none;
   }
   .d-lg-none {
     display: none !important;

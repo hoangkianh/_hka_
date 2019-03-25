@@ -84,7 +84,7 @@
 			display: none;
 		}
 
-		&.over {
+		&.open {
 
 			> .children,
 			> .sub-menu {
@@ -171,6 +171,16 @@
 		a {
 			display: inline-block;
 			padding: 0 20px;
+		}
+	}
+}
+
+@include media-breakpoint-up(lg) {
+
+	#primary-menu {
+
+		.open-child {
+			display: none;
 		}
 	}
 }
