@@ -947,22 +947,8 @@ body.menu-open {
   overflow: hidden;
 }
 
-#page.site {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  min-height: 100%;
-  overflow-wrap: break-word;
-  padding-top: 2rem;
-  position: relative;
-}
-
 body.menu-open #page.site::before {
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: #000;
   content: '';
   height: 100%;
   left: 0;

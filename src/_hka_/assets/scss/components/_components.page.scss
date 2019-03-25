@@ -6,17 +6,11 @@ body.menu-open {
 }
 
 #page.site {
-	display: flex;
-	flex-direction: column;
-	min-height: 100%;
-	overflow-wrap: break-word;
-	padding-top: 2rem;
-	position: relative;
 
 	body.menu-open & {
 
 		&::before {
-			background-color: rgba(0, 0, 0, .6);
+			background-color: #000;
 			content: '';
 			height: 100%;
 			left: 0;
