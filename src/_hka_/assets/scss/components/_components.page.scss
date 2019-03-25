@@ -1,3 +1,30 @@
 /**
 *  Page Component (#page.site).
 */
+body.menu-open {
+	overflow: hidden;
+}
+
+#page.site {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	overflow-wrap: break-word;
+	padding-top: 2rem;
+	position: relative;
+
+	body.menu-open & {
+
+		&::before {
+			background-color: rgba(0, 0, 0, .6);
+			content: '';
+			height: 100%;
+			left: 0;
+			opacity: .6;
+			position: fixed;
+			top: 0;
+			width: 100%;
+			z-index: 1;
+		}
+	}
+}
