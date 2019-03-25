@@ -61,8 +61,8 @@ let _hka_ = ( ( $ ) => {
 			$( '.menu-item-back' ).on( 'click', ( e ) => {
 				let $grand = $( e.currentTarget ).parent().parent();
 
-				if ( $grand.hasClass( 'over' ) ) {
-					$grand.removeClass( 'over' );
+				if ( $grand.hasClass( 'open' ) ) {
+					$grand.removeClass( 'open' );
 				}
 			});
 		}
