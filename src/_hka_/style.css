@@ -458,6 +458,13 @@ a {
   text-decoration: none;
 }
 
+img {
+  display: inline-block;
+  height: auto;
+  max-width: 100%;
+  vertical-align: top;
+}
+
 /*
  * Page-level setup
 */
