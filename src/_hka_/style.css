@@ -923,7 +923,7 @@ and our UI components are often composed of Objects and Components
 }
 
 #primary-menu .menu-item-back {
-  border-bottom: 1px dashed #e6e6e6;
+  border-bottom: 1px solid #e6e6e6;
   display: block;
   font-weight: 700;
   position: relative;
