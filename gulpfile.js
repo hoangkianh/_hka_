@@ -99,7 +99,7 @@ gulp.task( 'zip', () => {
 	gulp.series( 'translate' );
 
 	return gulp.src(
-		[ 'src/**/*',
+		[ `src/${theme}/*`,
 			`!src/${theme}/assets/scss/**`,
 			`!src/${theme}/assets/sourcemap/**`,
 			'!src/**/*.DS_Store'
