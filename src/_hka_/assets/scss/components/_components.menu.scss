@@ -101,16 +101,16 @@
 	li .children,
 	li .sub-menu {
 		background-color: #fff;
-		height: 100vh !important;
+		height: 100vh;
 		left: 0;
 		list-style: none;
 		margin: 0;
-		min-height: 100% !important;
+		min-height: 100%;
 		padding: 0;
 		position: absolute;
 		top: 0;
 		transform: translateX(100%);
-		width: 100% !important;
+		width: 100%;
 		z-index: 10;
 
 		@extend %transition;
