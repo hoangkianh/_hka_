@@ -13,26 +13,6 @@ const zip = require( 'gulp-zip' );
 const files = glob( 'src/*', { sync: true });
 const theme = files[0].replace( 'src/', '' );
 
-function getThemeVersion() {
-	let version = '';
-	let fileContent = fs.readFileSync( `${files[0]}/style.css`, 'utf-8' );
-
-	if ( fileContent ) {
-		let lines = fileContent.split( /\r\n|\n/ );
-
-		for ( let i = 0; i < lines.length; i++ ) {
-			if ( 0 === lines[i].indexOf( 'Version' ) ) {
-				if ( 'undefined' !== typeof lines[i].split( ' ' )[1]) {
-					version = lines[i].split( ' ' )[1];
-				}
-				break;
-			}
-		}
-	}
-
-	return version;
-}
-
 gulp.task( 'sass', () => {
 	return gulp.src( `src/${theme}/assets/scss/style.scss` )
 		.pipe( $.plumber() )
@@ -95,18 +75,18 @@ gulp.task( 'translate', () => {
 		.pipe( gulp.dest( `src/${theme}/languages/${config.textDomain}.pot` ) );
 });
 
-gulp.task( 'zip', () => {
-	gulp.series( 'translate' );
-
+gulp.task( 'zip-theme', () => {
 	return gulp.src(
 		[ `src/${theme}/**/*`,
 			`!src/${theme}/assets/scss/**`,
 			`!src/${theme}/assets/sourcemap/**`,
 			'!src/**/*.DS_Store'
 		])
-		.pipe( zip( `${theme}-${getThemeVersion()}.zip` ) )
+		.pipe( zip( `${theme}.zip` ) )
 		.pipe( gulp.dest( 'dist' ) );
 });
+
+gulp.task( 'zip', gulp.series( 'translate', 'zip-theme' ) );
 
 gulp.task( 'watch', () => {
 	gulp.watch( `src/${theme}/assets/scss/**/*.scss`, gulp.series( 'sass' ) );
