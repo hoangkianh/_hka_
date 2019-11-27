@@ -8,7 +8,7 @@ _hka_ is based on Underscores https://underscores.me/
 The first thing you want to do is copy the `_hka_` directory and change the name to something else, and then you'll need to do a six-step find and replace on the name in all the templates.
 1. Search for `'_hka_'` (inside single quotations) to capture the text domain.
 2. Search for `_hka__` to capture all the function names.
-3. Search for Text Domain: `_hka` in style.scss.
+3. Search for Text Domain: `_hka_` in style.scss.
 4. Search for ` _hka_` (with a space before it) to capture DocBlocks.
 5. Search for `_hka_-` to capture prefixed handles.
 6. Search for `_hka_` to capture the text domain in config.json
